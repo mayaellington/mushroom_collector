@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Mushroom List</h1>
+
+{% for mushroom in mushrooms %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ mushroom.name }}</span>
+      <p>name: {{ mushroom.name }}</p>
+      <p>scientific-name: {{ mushroom.scientific_name }}</p>
+      <p>Description: {{ mushroom.description }}</p>
+      <p>season: {{ mushroom.season }}</p>
+      <p>edibility: {{ mushroom.edibility }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
