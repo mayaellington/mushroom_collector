@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Mushroom List</h1>
 
-{% for mushroom in mushrooms %}
-  <div class="card">
-    <a href="{% url 'detail' mushroom.id %}">
+<div class="card">
       <div class="card-content purple teal lighten-4">
         <span class="card-title">{{ mushroom.name }}</span>
         <p>name: {{ mushroom.name }}</p>
@@ -14,8 +11,7 @@
         <p>season: {{ mushroom.season }}</p>
         <p>edibility: {{ mushroom.edibility }}</p>
       </div>
-    </a>
   </div>
-{% endfor %}
+
 
 {% endblock %}
