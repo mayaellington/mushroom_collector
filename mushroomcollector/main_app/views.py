@@ -1,8 +1,14 @@
 from django.shortcuts import render
 
+#import CreateView class
+from django.views.generic.edit import CreateView
 # Create your views here.
 from django.http import HttpResponse
 from .models import Mushroom
+
+class MushroomCreate(CreateView):
+    model = Mushroom
+    fields = '__all__' #this is two underscores
 
 def home(request):
     return HttpResponse('<h1>Mushroom Collector Home Page</h1>')

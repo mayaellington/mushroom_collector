@@ -18,8 +18,9 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;MushroomCollector🍄</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/mushrooms">View All Mushrooms</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'index' %}">View All Mushrooms</a></li>
+          <li><a href="{% url 'mushrooms_create' %}">Add A Mushroom</a></li>
         </ul>
       </div>
     </nav>
