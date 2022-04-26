@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 #import CreateView class
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 from django.http import HttpResponse
 from .models import Mushroom
@@ -9,6 +9,13 @@ from .models import Mushroom
 class MushroomCreate(CreateView):
     model = Mushroom
     fields = '__all__' #this is two underscores
+class MushroomUpdate(UpdateView):
+    model = Mushroom
+    fields = ['name', 'scientific_name', 'description', 'season', 'edibility']
+
+class MushroomDelete(DeleteView):
+    model = Mushroom
+    success_url = '/mushrooms/' 
 
 def home(request):
     return HttpResponse('<h1>Mushroom Collector Home Page</h1>')

@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+
 {% block content %}
+
+<h1>Mushroom Details</h1>
 
 
 <div class="card">
@@ -11,6 +14,10 @@
         <p>season: {{ mushroom.season }}</p>
         <p>edibility: {{ mushroom.edibility }}</p>
       </div>
+      <div class="card-action">
+		<a href="{% url 'mushrooms_update' mushroom.id %}">Edit</a>
+		<a href="{% url 'mushrooms_delete' mushroom.id %}">Delete</a>
+	</div>
   </div>
 
 
