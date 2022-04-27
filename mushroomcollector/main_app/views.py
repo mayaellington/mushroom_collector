@@ -28,12 +28,12 @@ def mushrooms_index(request):
     mushrooms = Mushroom.objects.all()
     return render(request, 'mushrooms/index.html', {'mushrooms': mushrooms}) 
 
-def mushroom_detail(request, shroom_id):
-    mushroom = Mushroom.objects.get(id=shroom_id)
+def mushroom_detail(request, mushroom_id):
+    mushroom = Mushroom.objects.get(id=mushroom_id)
     shroom_hunt_form = Shroom_HuntForm()
     return render(request, 'mushrooms/detail.html', {'mushroom': mushroom, 'shroom_hunt_form': shroom_hunt_form})
 
-def add_shroom_hunt(request, shroom_id):
+def add_shroom_hunt(request, mushroom_id):
 
     # create a ModelForm instance using data in request
     form = Shroom_HuntForm(request.POST)
@@ -43,7 +43,7 @@ def add_shroom_hunt(request, shroom_id):
         #creates instance of feeding to be put in database
         #lets not save it yet, commit=False, bc we didnt add foreign key
         new_shroom_hunt = form.save(commit=False)
-        new_shroom_hunt.shroom_id = shroom_id
+        new_shroom_hunt.mushroom_id = mushroom_id
         new_shroom_hunt.save() #adds feeding to database, asociated with same id as arg to function cat_id
 
-    return redirect('detail', shroom_id=shroom_id)
+    return redirect('detail', mushroom_id=mushroom_id)

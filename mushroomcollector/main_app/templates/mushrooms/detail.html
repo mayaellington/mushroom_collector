@@ -22,26 +22,42 @@
         </div>
     </div>
     <div class="col s6">
-        <form method="post">
+        <form method="post" action="{% url 'add_shroom_hunt' mushroom.id %}">
             {% csrf_token %}
             {{ shroom_hunt_form.as_p }}
             <input type="submit" class="btn" value="Add Shroom Hunt Details">
-          </form>
-    <table class="striped">
-        <thead>
-        <tr><th>Date</th><th>Shroom Hunt Location</th><th>Recent Rain?</th></tr>
-        </thead>
-        <tbody>
-        {% for shroom_hunt in mushroom.shroom_hunt_set.all %}
-            <tr>
-            <td>{{shroom_hunt.date}}</td>
-            <td>{{shroom_hunt.location}}</td>
-            <td>{{shroom_hunt.get_recent_rain_display}}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        </form>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Recent Rain?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shroom_hunt in mushroom.shroom_hunt_set.all %}
+                <tr>
+                    <td>{{shroom_hunt.date}}</td>
+                    <td>{{shroom_hunt.location}}</td>
+                    <td>{{shroom_hunt.get_recent_rain_display}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
+<script>
+    const dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+        format: 'yyyy-mm-dd',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    })
+
+    const selectEl = document.getElementById('id_recent_rain')
+    M.FormSelect.init(selectEl);
+</script>
 {% endblock %}

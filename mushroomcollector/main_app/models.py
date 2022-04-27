@@ -16,7 +16,7 @@ class Mushroom(models.Model):
 
     def get_absolute_url(self):
 
-        return reverse('detail', kwargs={'shroom_id': self.id})
+        return reverse('detail', kwargs={'mushroom_id': self.id})
 
 
 RAIN = (
@@ -24,7 +24,7 @@ RAIN = (
     ('C', 'Currently raining'),
     ('H', 'Rained within last 24 hrs'),
     ('W', 'Rained within last week'),
-    ('N', 'No recent rain')
+    ('N', 'No recent rain'),
 )
 
 class Shroom_Hunt(models.Model):
