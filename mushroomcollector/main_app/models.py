@@ -3,13 +3,22 @@ from django.urls import reverse
 
 # Create your models here.
 
+class Park(models.Model):
+  name = models.CharField(max_length=50)
+  state = models.CharField(max_length=2)
 
+  def __str__(self):
+    return f"{self.name}, {self.state}"
+
+  def get_absolute_url(self):
+    return reverse('parks_detail', kwargs={'pk': self.id})
 class Mushroom(models.Model):
     name = models.CharField(max_length=100)
     scientific_name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     season = models.CharField(max_length=100)
     edibility = models.CharField(max_length=100)
+    parks = models.ManyToManyField(Park)
 
     def __str__(self):
         return self.name
