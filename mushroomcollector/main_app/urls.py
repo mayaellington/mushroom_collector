@@ -9,5 +9,5 @@ urlpatterns = [
     path('mushrooms/create/', views.MushroomCreate.as_view(), name='mushrooms_create'),
     path('mushrooms/<int:pk>/update/', views.MushroomUpdate.as_view(), name='mushrooms_update'),
     path('mushrooms/<int:pk>/delete/', views.MushroomDelete.as_view(), name='mushrooms_delete'),
-
+    path('mushrooms/<int:shroom_id>/add_shroom_hunt/', views.add_shroom_hunt, name='add_shroom_hunt'),
 ]
