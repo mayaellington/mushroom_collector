@@ -46,11 +46,14 @@ def add_shroom_hunt(request, mushroom_id):
         #lets not save it yet, commit=False, bc we didnt add foreign key
         new_shroom_hunt = form.save(commit=False)
         new_shroom_hunt.mushroom_id = mushroom_id
-        new_shroom_hunt.save() #adds feeding to database, asociated with same id as arg to function cat_id
+        new_shroom_hunt.save() #adds shroom hunt to database, asociated with same id as arg to function mushroom_id
 
     return redirect('detail', mushroom_id=mushroom_id)
 
 def assoc_park(request, mushroom_id, park_id):
-  # Note that you can pass a toy's id instead of the whole object
     Mushroom.objects.get(id=mushroom_id).parks.add(park_id)
+    return redirect('detail', mushroom_id=mushroom_id)
+
+def unassoc_park(request, mushroom_id, park_id):
+    Mushroom.objects.get(id=mushroom_id).parks.remove(park_id)
     return redirect('detail', mushroom_id=mushroom_id)

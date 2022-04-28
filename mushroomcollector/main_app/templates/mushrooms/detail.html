@@ -59,6 +59,12 @@
                 {{ park.name }}, {{ park.state }}
             </span>
           </div>
+          <div class="card-action">
+            <form action="{% url 'unassoc_park' mushroom.id park.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Remove</button>
+            </form>
+          </div>
         </div>
       {% endfor %}
     {% else %}

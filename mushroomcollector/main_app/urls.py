@@ -11,4 +11,6 @@ urlpatterns = [
     path('mushrooms/<int:pk>/delete/', views.MushroomDelete.as_view(), name='mushrooms_delete'),
     path('mushrooms/<int:mushroom_id>/add_shroom_hunt/', views.add_shroom_hunt, name='add_shroom_hunt'),
     path('mushrooms/<int:mushroom_id>/assoc_park/<int:park_id>/', views.assoc_park, name='assoc_park'),
+    path('mushrooms/<int:mushroom_id>/unassoc_park/<int:park_id>/', views.unassoc_park, name='unassoc_park'),
+
 ]
